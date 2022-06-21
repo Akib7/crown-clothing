@@ -15,6 +15,7 @@ function withRouter(Component) {
 }
 
 const MenuItems = ({ title, imageUrl, size, linkUrl, router }) => (
+  // console.log(router);
   <div
     className={`${size} menu-item`}
     onClick={() => router.navigate(`${router.location.pathname}${linkUrl}`)}
