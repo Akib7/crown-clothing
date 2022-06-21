@@ -14,26 +14,6 @@ function withRouter(Component) {
   return ComponentWithRouterProp;
 }
 
-// const MenuItems = ({ title, img, size, location, linkUrl, match }) => (
-//   <div
-//     className={`${size} menu-item`}
-//     onClick={() => {
-//       match.navigate(`${match.location.pathname}${linkUrl}`);
-//     }}
-//   >
-//     <div
-//       style={{
-//         backgroundImage: `url(${img})`,
-//       }}
-//       className="background-image"
-//     />
-//     <div className="content">
-//       <h1 className="title">{title.toUpperCase()}</h1>
-//       <span className="subtitle">SHOP NOW</span>
-//     </div>
-//   </div>
-// );
-
 const MenuItems = ({ title, imageUrl, size, linkUrl, router }) => (
   <div
     className={`${size} menu-item`}
