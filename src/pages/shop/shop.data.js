@@ -67,26 +67,29 @@ const SHOP_DATA = [
     items: [
       {
         id: 1,
-        name: "Adidas NMD",
-        imageUrl: "https://i.ibb.co/0s3pdnc/adidas-nmd.png",
+        name: "Adidas Ultra Boost 20",
+        imageUrl:
+          "https://i.pinimg.com/564x/15/ce/6f/15ce6fdbbdf030af4c1fb27d45ecf031.jpg",
         price: 220,
       },
       {
         id: 2,
-        name: "Adidas Yeezy",
-        imageUrl: "https://i.ibb.co/dJbG1cT/yeezy.png",
+        name: "Nike LD Waffle Sacai White",
+        imageUrl:
+          "https://i.pinimg.com/564x/14/b5/90/14b5901d74a119b823a6f6b0520a429d.jpg",
         price: 280,
       },
       {
         id: 3,
-        name: "Black Converse",
-        imageUrl: "https://i.ibb.co/bPmVXyP/black-converse.png",
+        name: "Off-White VaporMax",
+        imageUrl:
+          "https://cdn.sanity.io/images/c1chvb1i/production/163566da105f194eb9d13e9b27a6197a9b5cce90-700x468.jpg",
         price: 110,
       },
       {
         id: 4,
-        name: "Nike White AirForce",
-        imageUrl: "https://i.ibb.co/1RcFPk0/white-nike-high-tops.png",
+        name: "NB 327 White",
+        imageUrl: "https://i.redd.it/h3pkgem2zi851.jpg",
         price: 160,
       },
       {
