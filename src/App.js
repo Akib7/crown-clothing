@@ -4,7 +4,7 @@ import "./App.css";
 import Header from "./components/header/header.component";
 import Homepage from "./pages/homepage/homepage.component";
 import ShopPage from "./pages/shop/shop.component";
-
+import SignInSignUpPage from "./pages/sign-in-and-sing-up/sign-in-and-sing-up.component";
 // const HatsPAge = () => (
 //   <div>
 //     <h1>HATS PAGE</h1>
@@ -57,6 +57,7 @@ function App() {
         <Route path="/" element={<Homepage />} />
         {/* <Route path="/hats" element={<HatsPAge />} /> */}
         <Route path="shop" element={<ShopPage />} />
+        <Route path="signin" element={<SignInSignUpPage />} />
       </Routes>
     </div>
   );
