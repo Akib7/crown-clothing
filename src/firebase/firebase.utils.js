@@ -15,40 +15,17 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 
-// export const firebaseAuth = getAuth();
+export const auth = getAuth(app);
 export const fbDatabase = getDatabase(app);
 export const fStore = getFirestore(app);
 export const fStorage = getStorage(app);
 
 const provider = new GoogleAuthProvider();
-// provider.setCustomParameters({ prompt: "select_account" });
-// // export const signInWithGoogle = () => firebaseAuth.signInWithPopup(provider);
-
-// export const signInWithGoogle = signInWithPopup(firebaseAuth, provider)
-//   .then((result) => {
-//     console.log(result);
-//   })
-//   .catch((error) => {
-//     console.log(error);
-//   });
-
-export const auth = getAuth();
-export const signInWithGoogle = signInWithPopup(auth, provider)
-  .then((result) => {
-    // This gives you a Google Access Token. You can use it to access the Google API.
-    const credential = GoogleAuthProvider.credentialFromResult(result);
-    const token = credential.accessToken;
-    // The signed-in user info.
-    const user = result.user;
-    // ...
-  })
-  .catch((error) => {
-    // Handle Errors here.
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // The email of the user's account used.
-    const email = error.customData.email;
-    // The AuthCredential type that was used.
-    const credential = GoogleAuthProvider.credentialFromError(error);
-    // ...
-  });
+export const signInWithGoogle = () =>
+  signInWithPopup(auth, provider)
+    .then((result) => {
+      console.log(result);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
