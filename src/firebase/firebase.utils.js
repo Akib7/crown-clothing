@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getStorage } from "firebase/storage";
 import { getDatabase } from "firebase/database";
-import { getFirestore } from "firebase/firestore/lite";
+import { getFirestore, getDoc } from "firebase/firestore/lite";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
 const firebaseConfig = {
@@ -15,8 +15,9 @@ const firebaseConfig = {
 
 export const createUserProfileDocument = async (userAuth, additionalData) => {
   if (!userAuth) return;
+  const colRef = doc(fStore, `users/1215151`);
 
-  console.log(fStore.doc("users/12384889"));
+  console.log(colRef);
 };
 
 const app = initializeApp(firebaseConfig);
