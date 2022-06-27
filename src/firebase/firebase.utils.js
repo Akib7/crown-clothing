@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getStorage } from "firebase/storage";
 import { getDatabase } from "firebase/database";
-import { getFirestore, getDoc, doc } from "firebase/firestore/lite";
+import { getFirestore, getDoc, setDoc, doc } from "firebase/firestore/lite";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
 const firebaseConfig = {
@@ -15,9 +15,29 @@ const firebaseConfig = {
 
 export const createUserProfileDocument = async (userAuth, additionalData) => {
   if (!userAuth) return;
-  const colRef = doc(fStore, `users/1215151`);
+  const userRef = doc(fStore, "users", `${userAuth.uid}`);
 
-  console.log(colRef);
+  const snapShot = await getDoc(userRef);
+  // console.log(snapShot);
+
+  if (!snapShot.exists) {
+    const { displayName, email } = userAuth;
+    const createdAt = new Date();
+
+    try {
+      await setDoc(userRef, {
+        displayName: displayName,
+        email: email,
+        createdAt: createdAt,
+        additionalData: { ...additionalData },
+      }).then(() => {
+        console.log("data added successfully");
+      });
+    } catch (error) {
+      console.log("error message", error.message);
+    }
+  }
+  return userRef;
 };
 
 const app = initializeApp(firebaseConfig);
