@@ -6,7 +6,7 @@ import Homepage from "./pages/homepage/homepage.component";
 import ShopPage from "./pages/shop/shop.component";
 import SignInSignUpPage from "./pages/sign-in-and-sing-up/sign-in-and-sing-up.component";
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
-
+import { onSnapshot } from "firebase/firestore";
 // const HatsPAge = () => (
 //   <div>
 //     <h1>HATS PAGE</h1>
@@ -62,12 +62,29 @@ class App extends React.Component {
   unsubscribeFromAuth = null;
 
   componentDidMount() {
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(async (user) => {
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
+      // this.setState({
+      //   currentUser: user,
+      // });
+      // console.log(user);
+      if (userAuth) {
+        const userRef = await createUserProfileDocument(userAuth);
+        const unsub = onSnapshot(userRef, (snapshot) => {
+          // console.log("Current data: ", snapshot.data());
+          this.setState(
+            {
+              currentUser: snapshot.id,
+              ...snapshot.data(),
+            },
+            () => {
+              console.log(this.state);
+            }
+          );
+        });
+      }
       this.setState({
-        currentUser: user,
+        currentUser: userAuth,
       });
-      createUserProfileDocument(user);
-      console.log(user);
     });
   }
 
