@@ -29,7 +29,7 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
         displayName: displayName,
         email: email,
         createdAt: createdAt,
-        additionalData: { ...additionalData },
+        additionalData: additionalData,
       }).then(() => {
         console.log("data added successfully");
       });
