@@ -23,13 +23,13 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
   if (snapShot !== null) {
     const { displayName, email } = userAuth;
     const createdAt = new Date();
-
+    console.log(additionalData, email);
     try {
       await setDoc(userRef, {
-        displayName: displayName,
+        displayName: additionalData,
         email: email,
         createdAt: createdAt,
-        additionalData: additionalData,
+        // additionalData: additionalData,
       }).then(() => {
         console.log("data added successfully");
       });
