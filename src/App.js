@@ -1,5 +1,12 @@
 import React from "react";
-import { Route, Routes, useParams, Link, useNavigate } from "react-router-dom";
+import {
+  Route,
+  Routes,
+  useParams,
+  Link,
+  useNavigate,
+  Navigate,
+} from "react-router-dom";
 import "./App.css";
 import Header from "./components/header/header.component";
 import Homepage from "./pages/homepage/homepage.component";
@@ -9,6 +16,7 @@ import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 import { onSnapshot } from "firebase/firestore";
 import { connect } from "react-redux";
 import { setCurrentUser } from "./redux/user/user.actions";
+
 // const HatsPAge = () => (
 //   <div>
 //     <h1>HATS PAGE</h1>
@@ -108,15 +116,27 @@ class App extends React.Component {
           <Route path="/" element={<Homepage />} />
           {/* <Route path="/hats" element={<HatsPAge />} /> */}
           <Route path="shop" element={<ShopPage />} />
-          <Route path="signin" element={<SignInSignUpPage />} />
+          <Route
+            path="signin"
+            element={
+              this.props.currentUser ? (
+                <Navigate to="/" />
+              ) : (
+                <SignInSignUpPage />
+              )
+            }
+          />
         </Routes>
       </div>
     );
   }
 }
 
+const mapStateToProps = ({ user }) => ({
+  currentUser: user.currentUser,
+});
 const mapDispatchToProps = (dispatch) => ({
   setCurrentUser: (user) => dispatch(setCurrentUser(user)), //dispatch is whatever you are passing me, I am going to pass that object to every reducers
 });
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
