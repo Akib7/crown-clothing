@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+
 import { ReactComponent as Logo } from "../../assests/crown.svg";
 import { auth } from "../../firebase/firebase.utils";
 import "./header.styles.scss";
@@ -29,4 +31,8 @@ const Header = ({ currentUser }) => (
   </div>
 );
 
-export default Header;
+const mapStateToStoreProps = (state) => ({
+  currentUser: state.user.userReducer, //state = rootReducer
+}); //mapStateToProps and connectare used anywhere we are going to use anywhere we need properties from our reducers
+
+export default connect(mapStateToStoreProps)(Header); //connect is higher order component which gets two props

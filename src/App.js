@@ -95,7 +95,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Header currentUser={this.state.currentUser} />
+        <Header />
         <Routes>
           <Route path="/" element={<Homepage />} />
           {/* <Route path="/hats" element={<HatsPAge />} /> */}
