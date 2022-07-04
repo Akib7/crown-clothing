@@ -39,7 +39,7 @@ const Header = ({ currentUser, hidden }) => (
 
 // const mapStateToStoreProps = (state) => ({
 //   currentUser: state.user.currentUser, //state = rootReducer
-// }); //mapStateToProps and connectare used anywhere we are going to use anywhere we need properties from our reducers
+// }); //mapStateToProps and connect are used anywhere we are going to use anywhere we need properties from our reducers
 
 const mapStateToStoreProps = ({ user: { currentUser }, cart: { hidden } }) => ({
   currentUser,
