@@ -11,6 +11,7 @@ import "./App.css";
 import Header from "./components/header/header.component";
 import Homepage from "./pages/homepage/homepage.component";
 import ShopPage from "./pages/shop/shop.component";
+import CheckoutPage from "./pages/checkout/checkout.component";
 import SignInSignUpPage from "./pages/sign-in-and-sing-up/sign-in-and-sing-up.component";
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 import { onSnapshot } from "firebase/firestore";
@@ -118,6 +119,7 @@ class App extends React.Component {
           <Route path="/" element={<Homepage />} />
           {/* <Route path="/hats" element={<HatsPAge />} /> */}
           <Route path="shop" element={<ShopPage />} />
+          <Route path="checkout" element={<CheckoutPage />} />
           <Route
             path="signin"
             element={
