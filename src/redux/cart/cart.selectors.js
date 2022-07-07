@@ -12,8 +12,13 @@ export const selectCartItems = createSelector(
 ); // create selector gets two args, 1. the collection/array of inputSelectors not necessarily always inputSelector,
 // 2. A function that will return a value we want out of the selctor.
 
+export const selectCartHidden = createSelector(
+  [selectCart],
+  (cart) => cart.hidden
+);
+
 export const selectCartItemsCount = createSelector(
-  [selectCartItems],
+  [selectCartItems, selectCartHidden],
   (cartItems) =>
     cartItems.reduce(
       (accumalatedQuantity, cartItem) =>

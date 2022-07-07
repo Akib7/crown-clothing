@@ -3,11 +3,18 @@ import { Link } from "react-router-dom";
 
 import { connect } from "react-redux";
 
+import { createStructuredSelector } from "reselect";
+
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 
 import { ReactComponent as Logo } from "../../assests/crown.svg";
 import { auth } from "../../firebase/firebase.utils";
 import CartIcon from "../cart-icon/cart-icon.component";
+
+import { selectCurrentUser } from "../../redux/user/user.selectors";
+
+import { selectCartHidden } from "../../redux/cart/cart.selectors";
+
 import "./header.styles.scss";
 
 const Header = ({ currentUser, hidden }) => (
@@ -41,9 +48,10 @@ const Header = ({ currentUser, hidden }) => (
 //   currentUser: state.user.currentUser, //state = rootReducer
 // }); //mapStateToProps and connect are used anywhere we are going to use anywhere we need properties from our reducers
 
-const mapStateToStoreProps = ({ user: { currentUser }, cart: { hidden } }) => ({
-  currentUser,
-  hidden,
-});
+const mapStateToStoreProps = createStructuredSelector({
+  currentUser: selectCurrentUser,
+  hidden: selectCartHidden,
+}); //instead of state, using 'createStructuredSelector'
+//it will automatically point to the respective selectors in the properties.
 
 export default connect(mapStateToStoreProps)(Header); //connect is higher order component which gets two props
