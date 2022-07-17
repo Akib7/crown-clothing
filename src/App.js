@@ -110,7 +110,7 @@ class App extends React.Component {
   componentWillUnmount() {
     this.unsubscribeFromAuth();
   }
-
+  //this is render function
   render() {
     return (
       <div>
